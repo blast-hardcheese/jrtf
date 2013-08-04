@@ -66,6 +66,16 @@ public abstract class RtfPara
   abstract void rtf( Appendable out, boolean withEndingPar ) throws IOException;
 
   /**
+   * Builds a paragraph from a collection of RtfText objects.
+   * @param texts RtfText.
+   * @return New {@code RtfTextPara} object with text.
+   */
+  public static RtfTextPara p( final Collection<RtfText> texts )
+  {
+    return p( texts.toArray( new RtfText[texts.size()] ) );
+  }
+
+  /**
    * Builds a paragraph of objects (with will be converted to Strings) and RtfText.
    * Convenience method for {@code p(RtfText.text(texts))}.
    * @param texts Text to set in paragraph.

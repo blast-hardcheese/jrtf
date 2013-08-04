@@ -333,15 +333,20 @@ public class RtfText
     return new RtfText( sb );
   }
 
-  //public static RtfText backgroundcolor( int colorindex, RtfText element )
-  //{
-  //  return new RtfText( "\\cb" + colorindex + " " + element.rtf() + "" );
-  //}
+  public static RtfText backgroundcolor( int colorindex, Object text )
+  {
+    RtfText rtfText = text( text );
+    StringBuilder sb = new StringBuilder( rtfText.rtf.length() + 10 );
+    sb.append( "{\\cb" ).append( colorindex )
+      .append( ' ' ).append( rtfText.rtf ).append( '}' );
 
-  //public static RtfText backgroundcolor( int colorindex, String text )
-  //{
-  //  return backgroundcolor( colorindex, text( text ) );
-  //}
+    return new RtfText( sb );
+  }
+
+  public static RtfText backgroundcolor( int colorindex, String text )
+  {
+    return backgroundcolor( colorindex, text( text ) );
+  }
 
   /**
    * Colors text.

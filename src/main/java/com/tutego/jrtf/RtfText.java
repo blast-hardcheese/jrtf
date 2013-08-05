@@ -31,6 +31,7 @@
  */
 package com.tutego.jrtf;
 
+import java.util.*;
 import java.io.*;
 import java.net.URL;
 
@@ -68,6 +69,16 @@ public class RtfText
   void rtf( Appendable out ) throws IOException
   {
     out.append( rtf );
+  }
+
+  /**
+   * Builds a text block from a collection of RtfText objects.
+   * @param texts RtfText.
+   * @return New {@code RtfText} object with text.
+   */
+  public static RtfText text( final Collection<RtfText> texts )
+  {
+    return text( false, (Object[]) texts.toArray( new RtfText[texts.size()] ) );
   }
 
   /**
